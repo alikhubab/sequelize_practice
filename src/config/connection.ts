@@ -18,7 +18,7 @@ export const sequelize = new Sequelize({
     max: 60,
   },
   dialect: "mysql",
-  logging: false,
+  logging: console.log,
 });
 
 const authenticate = async () => {
