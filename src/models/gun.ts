@@ -9,6 +9,10 @@ const Gun = sequelize.define("Gun", {
   manufacturing_country: {
     type: DataTypes.STRING,
   },
+  caliber: {
+    type: DataTypes.STRING,
+    defaultValue: "9mm",
+  },
 });
 
 console.log("isGun>> ", Gun === sequelize.models.Gun);

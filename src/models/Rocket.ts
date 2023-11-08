@@ -9,6 +9,7 @@ class Rocket extends Model {
   declare fuelType: string;
   declare payloadCapacity: number;
   declare currentStatus: string;
+  declare barrelLength: number;
 }
 
 Rocket.init(
@@ -23,6 +24,7 @@ Rocket.init(
     fuelType: DataTypes.STRING,
     payloadCapacity: DataTypes.INTEGER,
     currentStatus: DataTypes.STRING,
+    barrelLength: DataTypes.FLOAT,
   },
   {
     sequelize,
@@ -41,6 +43,6 @@ Rocket.init(
 // rocket.save();
 
 // Rocket.sync({ force: true }); // This creates the table, dropping it first if it already existed
-// Rocket.sync({ alter: true }); // This checks what is the current state of the table in the database (which columns it has, what are their data types, etc), and then performs the necessary changes in the table to make it match the model.
+Rocket.sync({ alter: true }); // This checks what is the current state of the table in the database (which columns it has, what are their data types, etc), and then performs the necessary changes in the table to make it match the model.
 
 console.log(Rocket === sequelize.models.Rocket);
