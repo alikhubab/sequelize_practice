@@ -21,6 +21,8 @@ Rocket.init(
   {
     sequelize,
     modelName: "Rocket",
+    freezeTableName: true,
+    tableName: "Rocket",
   }
 );
 
