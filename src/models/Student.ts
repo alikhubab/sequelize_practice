@@ -24,16 +24,24 @@ const Student = sequelize.define<StudentType>("student", {
 
   const amna = await Student.findOne({
     where: {
-      age: 30,
+      age: 44,
     },
   });
   if (amna) {
-    amna.name = "Amna Kanwal Khan";
-    amna.age = 32;
-    amna.save({ fields: ["name"] });
+    // await amna.increment("age");
+    await amna.increment({
+      age: 10,
+      cash: 33,
+    });
+    await amna.increment(["age", "cash"], {
+      by: 64,
+    });
+    // amna.name = "Amna Kanwal Khan";
+    // amna.age = 32;
+    // amna.save({ fields: ["name"] });
 
-    await amna.reload();
-    console.log(amna.age);
+    // await amna.reload();
+    // console.log(amna.age);
     //   await amna.save();
   }
 
@@ -51,14 +59,14 @@ const Student = sequelize.define<StudentType>("student", {
   //   }
   //   console.log(misbah?.toJSON());
 
-  const ali = await Student.findOne({
-    where: {
-      name: "Ali",
-    },
-  });
+  //   const ali = await Student.findOne({
+  //     where: {
+  //       name: "Ali",
+  //     },
+  //   });
 
-  if (ali) {
-    // await ali.update({ age: 28, favoriteColor: "blue" });
-    await ali.destroy();
-  }
+  //   if (ali) {
+  //     // await ali.update({ age: 28, favoriteColor: "blue" });
+  //     await ali.destroy();
+  //   }
 })();
