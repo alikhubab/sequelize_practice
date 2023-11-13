@@ -22,19 +22,60 @@ let k: Order;
 
 (async () => {
   //   const students = await Student.findAll({
-  //     attributes: ["name", "cash"],
+  //     attributes: ["name", "cash", "age"],
   //     where: {
-  //       cash: {
-  //         [Op.in]: [10227, 77],
+  //       age: {
+  //         [Op.and]: {
+  //           [Op.gt]: 20,
+  //           [Op.lt]: 32,
+  //         },
   //       },
   //     },
   //   });
+  //   const students = await Student.findAll({
+  //     attributes: ["name", "cash", "age"],
+  //     where: {
+  //       age: {
+  //         [Op.gt]: 20,
+  //         [Op.lt]: 32,
+  //       },
+  //     },
+  //   });
+
+  //   const students = await Student.findAll({
+  //     attributes: ["name", "cash", "age"],
+  //     where: {
+  //       [Op.or]: [
+  //         {
+  //           age: {
+  //             [Op.gt]: 20,
+  //             [Op.lt]: 32,
+  //           },
+  //         },
+  //         {
+  //           name: {
+  //             [Op.startsWith]: "am",
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   });
+
   const students = await Student.findAll({
-    attributes: ["name", "cash"],
+    attributes: ["name", "cash", "age"],
     where: {
-      name: {
-        [Op.endsWith]: "az",
-      },
+      [Op.not]: [
+        {
+          cash: {
+            [Op.is]: null,
+          },
+        },
+        // {
+        //   name: {
+        //     [Op.startsWith]: "am",
+        //   },
+        // },
+      ],
     },
   });
 
