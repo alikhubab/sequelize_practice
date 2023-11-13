@@ -13,6 +13,10 @@ const Gun = sequelize.define("Gun", {
     type: DataTypes.STRING,
     defaultValue: "9mm",
   },
+  licenseNumber: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+  },
 });
 
 console.log("isGun>> ", Gun === sequelize.models.Gun);
