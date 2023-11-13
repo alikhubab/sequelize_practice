@@ -1,4 +1,4 @@
-import { Sequelize, Model, DataTypes, Order } from "sequelize";
+import { Sequelize, Model, DataTypes, Order, Op } from "sequelize";
 import { sequelize } from "../config/connection";
 import { json } from "stream/consumers";
 import { User } from "./user";
@@ -20,11 +20,38 @@ const Student = sequelize.define<StudentType>("student", {
 let k: Order;
 
 (async () => {
+  //   const students = await Student.findAll({
+  //     where: {
+  //       age: 26,
+  //     },
+  //   });
+
+  //   const students = await Student.findAll({
+  //     where: {
+  //       age: {
+  //         [Op.gt]: 20,
+  //       },
+  //       favoriteColor: "red",
+  //     },
+  //   });
+
+  //   const students = await Student.findAll({
+  //     where: {
+  //       [Op.and]: {
+  //         age: {
+  //           [Op.gt]: 25,
+  //         },
+  //         favoriteColor: "red",
+  //       },
+  //     },
+  //   });
   const students = await Student.findAll({
-    attributes: {
-      include: [[sequelize.fn("COUNT", sequelize.col("cash")), "money"]],
+    where: {
+      age: {
+        [Op.or]: [26, 24],
+      },
     },
-    raw: true,
-    group: ["cash"],
   });
+
+  console.log(JSON.stringify(students, null, 4));
 })();
