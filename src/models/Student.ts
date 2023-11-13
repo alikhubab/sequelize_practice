@@ -61,21 +61,38 @@ let k: Order;
   //     },
   //   });
 
+  //   const students = await Student.findAll({
+  //     where: {
+  //       //   age: {
+  //       //     // [Op.ne]: 26,
+  //       //     // [Op.eq]: 26,
+  //       //     [Op.is]: null,
+  //       //   },
+  //       cash: {
+  //         // [Op.not]: null,
+  //         [Op.or]: [
+  //           null,
+  //           {
+  //             [Op.gt]: 6000,
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   });
+  //   const students = await Student.findAll({
+  //     attributes: ["name", "cash"],
+  //     where: {
+  //       cash: {
+  //         [Op.between]: [5000, 100000],
+  //       },
+  //     },
+  //   });
+
   const students = await Student.findAll({
+    attributes: ["name", "cash"],
     where: {
-      //   age: {
-      //     // [Op.ne]: 26,
-      //     // [Op.eq]: 26,
-      //     [Op.is]: null,
-      //   },
       cash: {
-        // [Op.not]: null,
-        [Op.or]: [
-          null,
-          {
-            [Op.gt]: 6000,
-          },
-        ],
+        [Op.notBetween]: [5000, 100000],
       },
     },
   });
