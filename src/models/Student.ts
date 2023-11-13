@@ -21,11 +21,37 @@ const Student = sequelize.define<StudentType>("student", {
   //   console.log(ali.name);
   //   ali.save();
 
-  const amna = await Student.build({
-    name: "Amna",
-    age: 30,
-    cash: 10000,
-    favoriteColor: "orange",
+  const amna = await Student.findOne({
+    where: {
+      age: 30,
+    },
   });
-  console.log(JSON.stringify(amna, null, 4));
+  if (amna) {
+    amna.name = "Amna Kanwal";
+    await amna.save();
+  }
+
+  const misbah = await Student.findOne({
+    where: {
+      age: 26,
+    },
+  });
+  if (misbah) {
+    misbah.set({
+      name: "Misbah Fayaz",
+      favoriteColor: "red",
+    });
+    await misbah.save();
+  }
+  console.log(misbah?.toJSON());
+
+  const ali = await Student.findOne({
+    where: {
+      name: "Ali",
+    },
+  });
+
+  if (ali) {
+    await ali.update({ age: 28, favoriteColor: "blue" });
+  }
 })();
