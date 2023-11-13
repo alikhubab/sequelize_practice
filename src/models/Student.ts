@@ -70,11 +70,11 @@ let k: Order;
             [Op.is]: null,
           },
         },
-        // {
-        //   name: {
-        //     [Op.startsWith]: "am",
-        //   },
-        // },
+        {
+          name: {
+            [Op.startsWith]: "am",
+          },
+        },
       ],
     },
   });
