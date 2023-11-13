@@ -21,15 +21,18 @@ const Student = sequelize.define<StudentType>("student", {
   //   console.log(ali.name);
   //   ali.save();
 
-  //   const amna = await Student.findOne({
-  //     where: {
-  //       age: 30,
-  //     },
-  //   });
-  //   if (amna) {
-  //     amna.name = "Amna Kanwal";
-  //     await amna.save();
-  //   }
+  const amna = await Student.findOne({
+    where: {
+      age: 30,
+    },
+  });
+  if (amna) {
+    amna.name = "Amna Kanwal Khan";
+
+    await amna.reload();
+    console.log(amna.name);
+    //   await amna.save();
+  }
 
   //   const misbah = await Student.findOne({
   //     where: {
