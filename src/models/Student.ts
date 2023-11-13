@@ -21,29 +21,29 @@ const Student = sequelize.define<StudentType>("student", {
   //   console.log(ali.name);
   //   ali.save();
 
-  const amna = await Student.findOne({
-    where: {
-      age: 30,
-    },
-  });
-  if (amna) {
-    amna.name = "Amna Kanwal";
-    await amna.save();
-  }
+  //   const amna = await Student.findOne({
+  //     where: {
+  //       age: 30,
+  //     },
+  //   });
+  //   if (amna) {
+  //     amna.name = "Amna Kanwal";
+  //     await amna.save();
+  //   }
 
-  const misbah = await Student.findOne({
-    where: {
-      age: 26,
-    },
-  });
-  if (misbah) {
-    misbah.set({
-      name: "Misbah Fayaz",
-      favoriteColor: "red",
-    });
-    await misbah.save();
-  }
-  console.log(misbah?.toJSON());
+  //   const misbah = await Student.findOne({
+  //     where: {
+  //       age: 26,
+  //     },
+  //   });
+  //   if (misbah) {
+  //     misbah.set({
+  //       name: "Misbah Fayaz",
+  //       favoriteColor: "red",
+  //     });
+  //     await misbah.save();
+  //   }
+  //   console.log(misbah?.toJSON());
 
   const ali = await Student.findOne({
     where: {
@@ -52,6 +52,7 @@ const Student = sequelize.define<StudentType>("student", {
   });
 
   if (ali) {
-    await ali.update({ age: 28, favoriteColor: "blue" });
+    // await ali.update({ age: 28, favoriteColor: "blue" });
+    await ali.destroy();
   }
 })();
