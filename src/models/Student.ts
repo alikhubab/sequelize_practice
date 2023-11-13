@@ -2,6 +2,7 @@ import { Sequelize, Model, DataTypes, Order, Op } from "sequelize";
 import { sequelize } from "../config/connection";
 import { json } from "stream/consumers";
 import { User } from "./user";
+import { number } from "joi";
 
 interface StudentType extends Model {
   name: string;
@@ -45,10 +46,36 @@ let k: Order;
   //       },
   //     },
   //   });
+  //   const students = await Student.findAll({
+  //     where: {
+  //       age: {
+  //         [Op.or]: [26, 24],
+  //       },
+  //     },
+  //   });
+
+  //   const students = await Student.findAll({
+  //     where: {
+  //       [Op.or]: [{ age: 26 }, { cash: 10227 }],
+  //       [Op.and]: [{ age: 26 }, { cash: 5000 }],
+  //     },
+  //   });
+
   const students = await Student.findAll({
     where: {
-      age: {
-        [Op.or]: [26, 24],
+      //   age: {
+      //     // [Op.ne]: 26,
+      //     // [Op.eq]: 26,
+      //     [Op.is]: null,
+      //   },
+      cash: {
+        // [Op.not]: null,
+        [Op.or]: [
+          null,
+          {
+            [Op.gt]: 6000,
+          },
+        ],
       },
     },
   });
