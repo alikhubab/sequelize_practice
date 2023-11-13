@@ -22,77 +22,18 @@ let k: Order;
 
 (async () => {
   //   const students = await Student.findAll({
-  //     where: {
-  //       age: 26,
-  //     },
-  //   });
-
-  //   const students = await Student.findAll({
-  //     where: {
-  //       age: {
-  //         [Op.gt]: 20,
-  //       },
-  //       favoriteColor: "red",
-  //     },
-  //   });
-
-  //   const students = await Student.findAll({
-  //     where: {
-  //       [Op.and]: {
-  //         age: {
-  //           [Op.gt]: 25,
-  //         },
-  //         favoriteColor: "red",
-  //       },
-  //     },
-  //   });
-  //   const students = await Student.findAll({
-  //     where: {
-  //       age: {
-  //         [Op.or]: [26, 24],
-  //       },
-  //     },
-  //   });
-
-  //   const students = await Student.findAll({
-  //     where: {
-  //       [Op.or]: [{ age: 26 }, { cash: 10227 }],
-  //       [Op.and]: [{ age: 26 }, { cash: 5000 }],
-  //     },
-  //   });
-
-  //   const students = await Student.findAll({
-  //     where: {
-  //       //   age: {
-  //       //     // [Op.ne]: 26,
-  //       //     // [Op.eq]: 26,
-  //       //     [Op.is]: null,
-  //       //   },
-  //       cash: {
-  //         // [Op.not]: null,
-  //         [Op.or]: [
-  //           null,
-  //           {
-  //             [Op.gt]: 6000,
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   });
-  //   const students = await Student.findAll({
   //     attributes: ["name", "cash"],
   //     where: {
   //       cash: {
-  //         [Op.between]: [5000, 100000],
+  //         [Op.in]: [10227, 77],
   //       },
   //     },
   //   });
-
   const students = await Student.findAll({
     attributes: ["name", "cash"],
     where: {
-      cash: {
-        [Op.notBetween]: [5000, 100000],
+      name: {
+        [Op.endsWith]: "az",
       },
     },
   });
