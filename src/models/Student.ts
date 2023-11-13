@@ -4,6 +4,7 @@ import { json } from "stream/consumers";
 
 interface StudentType extends Model {
   name: string;
+  age: number;
 }
 const Student = sequelize.define<StudentType>("student", {
   name: DataTypes.TEXT,
@@ -28,9 +29,11 @@ const Student = sequelize.define<StudentType>("student", {
   });
   if (amna) {
     amna.name = "Amna Kanwal Khan";
+    amna.age = 32;
+    amna.save({ fields: ["name"] });
 
     await amna.reload();
-    console.log(amna.name);
+    console.log(amna.age);
     //   await amna.save();
   }
 
