@@ -15,8 +15,15 @@ const Student = sequelize.define<StudentType>("student", {
 });
 
 (async () => {
-  await sequelize.sync({ force: true });
-  const ali = Student.build({ name: "Ali" });
-  console.log(ali.name);
-  ali.save();
+  //   await sequelize.sync({ force: true });
+  //   const ali = Student.build({ name: "Ali" });
+  //   console.log(ali.name);
+  //   ali.save();
+
+  const misbah = await Student.create({
+    name: "Misbah",
+    age: 26,
+    cash: 5000,
+    favoriteColor: "blue",
+  });
 })();
